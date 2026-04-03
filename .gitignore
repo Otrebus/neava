@@ -1,0 +1,5 @@
+__pycache__
+*.pyc
+ *.pyc
+.vscode
+__debug_bin.exe
