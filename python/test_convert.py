@@ -61,7 +61,7 @@ def xml_to_original(xml):
         if node.nodeType == node.ELEMENT_NODE and node.nodeName == 'person':
             person = node
             
-            dic = { "firstname": None, "lastname": None }
+            dic = { "firstname": "", "lastname": "" }
 
             get_attrs(person, dic)
 
@@ -69,29 +69,29 @@ def xml_to_original(xml):
 
             for node in person.childNodes:
                 if node.nodeType == node.ELEMENT_NODE and node.nodeName == 'address':
-                    dic = { "street": None, "city": None, "areacode": None }
+                    dic = { "street": "", "city": "", "areacode": "" }
                     get_attrs(node, dic)
                     s += f"A|{dic['street']}|{dic['city']}|{dic['areacode']}\n"
 
                 if node.nodeType == node.ELEMENT_NODE and node.nodeName == 'phone':
-                    dic = { "mobile": None, "landline": None }
+                    dic = { "mobile": "", "landline": "" }
                     get_attrs(node, dic)
                     s += f"T|{dic['mobile']}|{dic['landline']}\n"
 
                 if node.nodeType == node.ELEMENT_NODE and node.nodeName == 'family':
                     family = node
-                    dic = { "name": None, "born": None }
+                    dic = { "name": "", "born": "" }
                     get_attrs(family, dic)
                     s += f"F|{dic['name']}|{dic['born']}\n"
                     for rel in family.childNodes:
 
                         if rel.nodeType == node.ELEMENT_NODE and rel.nodeName == 'address':
-                            dic = { "street": None, "city": None, "areacode": None }
+                            dic = { "street": "", "city": "", "areacode": "" }
                             get_attrs(rel, dic)
                             s += f"A|{dic['street']}|{dic['city']}|{dic['areacode']}\n"
 
                         if rel.nodeType == node.ELEMENT_NODE and rel.nodeName == 'phone':
-                            dic = { "mobile": None, "landline": None }
+                            dic = { "mobile": "", "landline": "" }
                             get_attrs(rel, dic)
                             s += f"T|{dic['mobile']}|{dic['landline']}\n"
     return s
